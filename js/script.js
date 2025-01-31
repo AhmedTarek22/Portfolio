@@ -6,11 +6,9 @@ menuIcon.onclick = () => {
   menuIcon.classList.toggle("fa-x");
   navbar.classList.toggle("active");
 };
-
 // scroll
 let sections = document.querySelectorAll("section");
 let navLinks = document.querySelectorAll("header nav a");
-
 window.onscroll = () => {
   sections.forEach((sec) => {
     let top = window.scrollY;
@@ -59,4 +57,93 @@ const typed = new Typed(".multiple-text", {
   backSpeed: 100,
   backDelay: 1000,
   loop: true,
+});
+
+// Skills
+// document
+//   .querySelector("#skills-content")
+//   .addEventListener("click", function (event) {
+//     if (event.target.tagName === "H3") {
+//       document
+//         .querySelectorAll("div h3")
+//         .forEach((h3) => h3.classList.remove("active"));
+//       document
+//         .querySelectorAll(".skills-container")
+//         .forEach((div) => div.classList.add("display: none"));
+//       event.target.classList.toggle("active");
+//       if (event.target.name === "tools") {
+//         document.querySelector("#tools").classList.add("display: flex");
+//       } else {
+//         document.querySelector("#tichnical").classList.add("display: flex");
+//       }
+//     }
+//   });
+document
+  .querySelector("#skills-content")
+  .addEventListener("click", function (event) {
+    if (event.target.tagName === "H3") {
+      // إزالة الكلاس "active" من جميع العناصر h3
+      document
+        .querySelectorAll("#skills-content h3")
+        .forEach((h3) => h3.classList.remove("active"));
+
+      // إخفاء جميع الأقسام داخل skills-container
+      document
+        .querySelectorAll(".skills-container")
+        .forEach((div) => div.classList.add("hidden"));
+
+      // تفعيل الـ h3 المُحدد
+      event.target.classList.add("active");
+
+      // التحقق من العنصر الذي تم النقر عليه وإظهار القسم المناسب
+      const targetId = event.target.getAttribute("data-target");
+      if (targetId) {
+        document.querySelector(`#${targetId}`).classList.remove("hidden");
+      }
+    }
+  });
+
+// Contact
+let inputEmail = document.querySelector("#email");
+let subjectEmail = document.querySelector("#subjectEmail");
+let mesageEmail = document.querySelector("#mesageEmail");
+let sendMessageBtn = document.getElementById("sendMessage");
+const emailValid = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+
+// sendMessageBtn.onclick = (e) => {
+//   e.preventDefault();
+//   if (
+//     inputEmail.value.trim().length === 0 ||
+//     subjectEmail.value.trim().length === 0 ||
+//     mesageEmail.value.trim().length === 0
+//   ) {
+//     console.log("Enter full data");
+//     return;
+//   }
+//   if (!emailValid.test(inputEmail.value)) {
+//     console.log("Enter valid email");
+//     return;
+//   }
+// };
+
+document.getElementById("sendMessage").addEventListener("click", function (e) {
+  e.preventDefault();
+
+  const templateParams = {
+    to_name: "Ahmed",
+    from_name: inputEmail.value,
+    subject: subjectEmail.value,
+    message: mesageEmail.value,
+  };
+
+  emailjs.send("service_5jkhd9q", "template_55cuest", templateParams).then(
+    function (response) {
+      console.log("SUCCESS!", response.status, response.text);
+      alert("Email sent successfully!");
+    },
+    function (error) {
+      console.log("FAILED...", error);
+      alert("Failed to send email.");
+    }
+  );
 });
