@@ -60,42 +60,17 @@ const typed = new Typed(".multiple-text", {
 });
 
 // Skills
-// document
-//   .querySelector("#skills-content")
-//   .addEventListener("click", function (event) {
-//     if (event.target.tagName === "H3") {
-//       document
-//         .querySelectorAll("div h3")
-//         .forEach((h3) => h3.classList.remove("active"));
-//       document
-//         .querySelectorAll(".skills-container")
-//         .forEach((div) => div.classList.add("display: none"));
-//       event.target.classList.toggle("active");
-//       if (event.target.name === "tools") {
-//         document.querySelector("#tools").classList.add("display: flex");
-//       } else {
-//         document.querySelector("#tichnical").classList.add("display: flex");
-//       }
-//     }
-//   });
 document
   .querySelector("#skills-content")
   .addEventListener("click", function (event) {
     if (event.target.tagName === "H3") {
-      // إزالة الكلاس "active" من جميع العناصر h3
       document
         .querySelectorAll("#skills-content h3")
         .forEach((h3) => h3.classList.remove("active"));
-
-      // إخفاء جميع الأقسام داخل skills-container
       document
         .querySelectorAll(".skills-container")
         .forEach((div) => div.classList.add("hidden"));
-
-      // تفعيل الـ h3 المُحدد
       event.target.classList.add("active");
-
-      // التحقق من العنصر الذي تم النقر عليه وإظهار القسم المناسب
       const targetId = event.target.getAttribute("data-target");
       if (targetId) {
         document.querySelector(`#${targetId}`).classList.remove("hidden");
