@@ -101,24 +101,24 @@ const emailValid = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 //   }
 // };
 
-document.getElementById("sendMessage").addEventListener("click", function (e) {
-  e.preventDefault();
+// document.getElementById("sendMessage").addEventListener("click", function (e) {
+//   e.preventDefault();
 
-  const templateParams = {
-    to_name: "Ahmed",
-    from_name: inputEmail.value,
-    subject: subjectEmail.value,
-    message: mesageEmail.value,
-  };
+//   const templateParams = {
+//     to_name: "Ahmed",
+//     from_name: inputEmail.value,
+//     subject: subjectEmail.value,
+//     message: mesageEmail.value,
+//   };
 
-  emailjs.send("service_5jkhd9q", "template_55cuest", templateParams).then(
-    function (response) {
-      console.log("SUCCESS!", response.status, response.text);
-      alert("Email sent successfully!");
-    },
-    function (error) {
-      console.log("FAILED...", error);
-      alert("Failed to send email.");
-    }
-  );
-});
+//   emailjs.send("service_5jkhd9q", "template_55cuest", templateParams).then(
+//     function (response) {
+//       console.log("SUCCESS!", response.status, response.text);
+//       alert("Email sent successfully!");
+//     },
+//     function (error) {
+//       console.log("FAILED...", error);
+//       alert("Failed to send email.");
+//     }
+//   );
+// });

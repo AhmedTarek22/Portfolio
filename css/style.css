@@ -55,6 +55,11 @@ section {
   color: var(--text-color);
   font-weight: 600;
   cursor: pointer;
+  transition: 0.5s;
+}
+
+.logo:hover {
+  color: var(--main-color);
 }
 
 .navbar a {
